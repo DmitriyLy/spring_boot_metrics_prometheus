@@ -34,6 +34,11 @@ public class OrdersController {
         return StubUtils.getOrderById(id);
     }
 
+    @GetMapping(value = "/orders/error")
+    public Order getOrderError() {
+        throw new  RuntimeException("Order getting error");
+    }
+
     @PostConstruct
     void init() {
         counter = Counter.builder("test.dmly").register(meterRegistry);
